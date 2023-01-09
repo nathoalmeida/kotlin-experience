@@ -112,6 +112,73 @@ fun main() {
         cakesBaked++
     } while (cakesBaked < cakesEaten)
 
-    
+    // iterators
+
+    class Animal(val name: String)
+
+    class Zoo(val animals: List<Animal>) {
+
+        operator fun iterator(): Iterator<Animal> {
+            return animals.iterator()
+        }
+    }
+
+    val zoo = Zoo(listOf(Animal("zebra"), Animal("lion")))
+    val zoo = Zoo(animals)
+
+    for (animal in zoo) {
+        println("Watch out, it's a ${animal.name}")
+    }
+
+    // ranges
+
+    for(i in 0..3) { // from zero to three, including three
+        print(i)
+    }
+
+    for(i in 0 until 3) {// does not include three
+        print(i)
+    }
+
+    for(i in 2..8 step 2) { // jump 2 in 2 steps
+        print(i)
+    }
+
+    for(i in 3 downTo 0) { // decrements
+        print(i)
+    }
+
+    // char ranges
+
+    for (c in 'a'..'d') {
+        print(c)
+    }
+
+    for(c in 'z'..'s' step 2) {
+        print(c)
+    }
+
+    // equality checks
+
+    val authors = setOf("Shakespeare", "Hemingway", "Twain")
+    val writers = setOf("Twain", "Shakespeare", "Hemingway")
+
+    println(authors == authors) // structure comparison
+    println( authors === writers) // reference comparison, in memory address
+
+
+    // ternary if
+    fun max(a: Int, b: Int) = if (a >b) a else b
+
+    fun maxOld(a: Int, b: Int): Int {
+        if(a > b) {
+            return a
+            else {
+                return b
+            }
+
+        }
+    }
+
 
 }
