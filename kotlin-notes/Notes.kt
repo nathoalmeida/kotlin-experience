@@ -1,3 +1,4 @@
+import java.lang.constant.ClassDesc
 
 fun main() {
 
@@ -173,12 +174,65 @@ fun main() {
     fun maxOld(a: Int, b: Int): Int {
         if(a > b) {
             return a
-            else {
+            else {it
                 return b
             }
 
         }
     }
 
+    // collections
+    // lists (accept duplicated values)
+
+    val systemUsers: MutableList<Int> = mutableListOf(1,2,3)
+    val sudoers: List<Int> = systemUsers /* create a variable with a copy
+    of systemUsers only to read values */
+
+    fun addSystemUser(newUser: Int) {
+        systemUsers.add(newUser)
+    }
+
+    fun getSysSudoers(): List<Int> {
+        return sudoers
+    }
+
+    addSystemUser(4)
+    println("Tot sudoers: ${getSysSudoers().size}")
+    getSysSudoers().forEach {
+        i -> println("Some useful info on user $i")
+    }
+
+    // set (does not accept duplicated values)
+
+    val openIssues: MutableSet<String> = mutableSetOf("uniqueDescr1", "uniqueDescr2", "uniqueDescr3")
+
+    fun addIssue(uniqueDesc: String): Boolean {
+        return openIssues.add(uniqueDesc)
+    }
+
+    fun getStatusLog(isAdded: Boolean): String {
+        return if(isAdded) "registered correctly." else "marked as duplicate and rejected"
+    }
+
+    val aNewIssue: String = "uniqueDescr4"
+    val andIssueAlreadyIn: String = "uniqueDescr2"
+
+    println("Issue $aNewIssue ${getStatusLog(addIssue(aNewIssue))}")
+    println("Issue $andIssueAlreadyIn ${getStatusLog(addIssue(andIssueAlreadyIn))}") //must not accept it because it's duplicated
+
+    // maps (key and value)
+
+    const val POINTS_X_PASS: Int = 15
+    val EZPassAccounts: MutableMap<Int, Int> = mutableMapOf(1 to 100, 2 to 100, 3 to 100)
+    val EZPassReports: Map<Int, Int> = EZPassAccounts
+
+    fun updatePointsCredit(accountId: Int) {
+        if(EZPassAccounts.containsKey(accountId)) {
+            println("Updating $accountId...")
+            EZPassAccounts[accountId] = EZPassAccounts.getValue(accountId) + POINTS_X_PASS
+        } else {
+            println("Error: Trying o update a non-existing account (id: $accountId")
+        }
+    }
 
 }
