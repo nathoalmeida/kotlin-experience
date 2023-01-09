@@ -35,6 +35,31 @@ fun main() {
     var neverNull: String = "This can't be null; the compiler assumes non-null"
     var maybeNull: String? = "You can keep a null here"
 
+    // classes in kotlin
+
+    class Costumer
+
+    class Contact(val id: Int, var email: String)
+
+    val customer = Customer() // new object, default constructor
+
+    val contact = Contact(1, "something@email.com")
+
+    // generic classes
+
+    class MutableStack<E>(vararg items: E) {
+        private val elements = items.toMutableList()
+
+        fun push(element: E) = elements.add(element)
+
+        funk peek(): E = elements.last()
+
+    }
+
+    // generic functions
+
+    fun <E> mutableStackOf(vararg elements: E) = MutableStack(*elements)
+
 
 
 }
