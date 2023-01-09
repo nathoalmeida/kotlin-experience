@@ -60,6 +60,58 @@ fun main() {
 
     fun <E> mutableStackOf(vararg elements: E) = MutableStack(*elements)
 
+    // when statement ([switch] in other languages)
 
+    fun cases(obj: Any) {
+        when(obj) {
+            1 -> println("One")
+            "Hello" -> println("Greeting")
+            is Long -> println("Long")
+            !is String -> println("Not a string")
+            else -> println("Unknown") // [default]
+        }
+    }
+
+    // when expression
+
+    println(whenAssign("Hello"))
+
+    fun whenAssign(obj: Any): Any {
+        val result = when (obj) {
+            1 -> "one"
+            "Hello" -> 1
+            is Long -> false
+            else -> 42
+        }
+    }
+
+    // loops
+    // for loop
+    val cakes = listOf("carrot", "cheese", "chocolate")
+
+    for (cake in cakes) {
+        prinln("Yummy, it's a $cake cake!")
+    }
+
+    //while and do-while
+
+    fun eatAcake() = println("Eat a cake")
+    fun bakeAcake() = println("Bake a cake")
+
+    var cakesEaten = 0
+    var cakesBaked = 0
+
+    while (cakesEaten < 5) {
+        eatAcake()
+        cakesEaten ++
+
+    }
+
+    do {
+        bakeAcake()
+        cakesBaked++
+    } while (cakesBaked < cakesEaten)
+
+    
 
 }
